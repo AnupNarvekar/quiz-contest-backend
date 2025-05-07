@@ -1,5 +1,6 @@
 # Quiz Contest Participation System
-An assessment project for TenTwenty
+
+#### (Assessment project for TenTwenty)
 
 A Node.js backend application for managing quiz contests with different user roles, real-time leaderboards, and timed questions.
 
@@ -14,23 +15,26 @@ A Node.js backend application for managing quiz contests with different user rol
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or later)
-- MongoDB
-- Redis
-
 ### Installation
 
 Follow any one way as per your preferance
 
-# 1. Using Docker (recommended)
+# 1. Using Docker (Recommended)
 
-1. Clone this repository:
+### Prerequisites
+
+- ### MacOS & Windows
+  - Docker desktop (installs docker enginer + compose)
+
+- ### Linux
+  - Docker
+  - Docker compose (v2)
+
+1. Clone and cd into repository:
 
    ```
-   git clone https://github.com/your-username/quiz-contest-system.git
-   cd quiz-contest-system
+   git clone https://github.com/AnupNarvekar/quiz-contest-backend.git
+   cd quiz-contest-backend
    ```
 
 2. Build and start the app:
@@ -38,7 +42,15 @@ Follow any one way as per your preferance
    docker compose up --build
    ```
 
+<br>
+
 # 2. The Traditional Way
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- MongoDB
+- Redis
 
 1. Clone the repository:
 
@@ -53,21 +65,20 @@ Follow any one way as per your preferance
    npm i
    ```
 
-3. Seed the database with initial data:
+3. Start the application:
+   ```
+   npm run start
+   ```
+
+4. Seed the database with initial data (in a separate terminal):
 
    ```
    npm run seed
    ```
 
-4. Start the application:
-   ```
-   npm start
-   ```
-
-### Note
+### Note:
 
 I've included the .env files in this repository to streamline the project setup process. Since this application is designed for local development, these files do not contain any sensitive information, and are safe to share with your team.
-
 
 ## API Documentation
 
