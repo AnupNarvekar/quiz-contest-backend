@@ -209,3 +209,6 @@ All admin endpoints require authentication with an admin user.
   - Headers: `Authorization: Bearer <token>`
   - Query Parameters: `page`, `limit`, `contestId`, `userId`
   - Response: List of prizes
+
+## Postman collection
+https://documenter.getpostman.com/view/18716978/2sB2j7dVDA
