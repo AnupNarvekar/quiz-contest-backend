@@ -212,3 +212,12 @@ All admin endpoints require authentication with an admin user.
 
 ## Postman collection
 https://documenter.getpostman.com/view/18716978/2sB2j7dVDA
+
+## Additional notes
+The application is exposed on port 5000, therefore the baseURL for all the endpoints would be: http://localhost:5000/   
+  
+If you'd like to access the database, use one of the following connection string depending on how to setup the app:
+  - Docker: mongodb://mongo:27017/quiz-contest
+  - without-docker: mongodb://localhost:27017/quiz-contest
+
+
