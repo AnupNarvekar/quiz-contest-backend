@@ -8,7 +8,7 @@ const Prize = require('../models/Prize');
 exports.getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    
+
     res.status(200).json({
       success: true,
       data: {
@@ -35,13 +35,20 @@ exports.upgradeToVip = async (req, res) => {
   try {
     // In a real-world scenario, this would include payment processing
     // For this implementation, we'll just update the user type
-    
+    const isPaymentSuccessful = true;
+    if (!isPaymentSuccessful) {
+      res.status(500).json({
+        success: false,
+        message: 'Patment error',
+      });
+    }
+
     const user = await User.findByIdAndUpdate(
       req.user.id,
       { userType: 'VIP' },
       { new: true }
     );
-    
+
     res.status(200).json({
       success: true,
       message: 'Successfully upgraded to VIP',
@@ -70,15 +77,15 @@ exports.getParticipations = async (req, res) => {
     const page = parseInt(req.query.page, 10) || 1;
     const limit = parseInt(req.query.limit, 10) || 10;
     const skip = (page - 1) * limit;
-    
+
     const participations = await Participation.find({ userId: req.user.id })
       .populate('contestId', 'contestName description status')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
     const total = await Participation.countDocuments({ userId: req.user.id });
-    
+
     res.status(200).json({
       success: true,
       count: participations.length,
@@ -107,15 +114,15 @@ exports.getPrizes = async (req, res) => {
     const page = parseInt(req.query.page, 10) || 1;
     const limit = parseInt(req.query.limit, 10) || 10;
     const skip = (page - 1) * limit;
-    
+
     const prizes = await Prize.find({ userId: req.user.id })
       .populate('contestId', 'contestName')
       .sort({ wonAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
     const total = await Prize.countDocuments({ userId: req.user.id });
-    
+
     res.status(200).json({
       success: true,
       count: prizes.length,
